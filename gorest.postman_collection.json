@@ -1,0 +1,190 @@
+{
+	"info": {
+		"_postman_id": "7bf76207-c6d3-4ad0-87e9-2ec3b0afb332",
+		"name": "gorest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19758034"
+	},
+	"item": [
+		{
+			"name": "GETistuser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://gorest.co.in/public/v2/users",
+					"protocol": "https",
+					"host": [
+						"gorest",
+						"co",
+						"in"
+					],
+					"path": [
+						"public",
+						"v2",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "verify response",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = JSON.parse(responseBody);   \r",
+							"\r",
+							"tests[\"Verify total record on the page\"]=response.length == \"20\"\r",
+							"\r",
+							"tests[\"id 2492 has name = Fr. Gatik Ahluwalia\"] = response.id=\"2492\".name=\"Fr. Gatik Ahluwalia\"\r",
+							"\r",
+							"tests[\"id 2483 has email = birjesh_acharya@brown.net\"]=response.id = \"2483\",email = \"birjesh_acharya@brownn.net\"\r",
+							"\r",
+							"tests[\"All ID has status = active\"]=response.status = \"active\"\r",
+							"\r",
+							"tests[\"id 2472 has gender = female\"]=response.id = 2472 ,gender = \"female\"\r",
+							" \r",
+							"tests[\"id 2471 has gender = male\"]=response.id = 2471 ,gender = \"male\" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://gorest.co.in/public/v2/users",
+					"protocol": "https",
+					"host": [
+						"gorest",
+						"co",
+						"in"
+					],
+					"path": [
+						"public",
+						"v2",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post create user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n        \"first_name\": \"sita\",\r\n         \"last_name\": \"ram\",\r\n          \"gender\": \"female\",\r\n          \"dob\":\"09-09-1998\",\r\n        \"email\": \"siyaram@yahoo.com\",\r\n        \"phone\":\"6756745366\",\r\n        \"website\":\"www.li.co.uk\",\r\n        \"address\":\"3 Avenue\",\r\n        \"status\":\"active\"\r\n        \r\n\r\n       \r\n }"
+				},
+				"url": {
+					"raw": "https://gorest.co.in/public-api/users",
+					"protocol": "https",
+					"host": [
+						"gorest",
+						"co",
+						"in"
+					],
+					"path": [
+						"public-api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put update user",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\"name\":\"Allasani Peddana\",\r\n\"email\":\"allasani.peddana@15ce.com\", \"status\":\"active\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://gorest.co.in/public/v2/users/16",
+					"protocol": "https",
+					"host": [
+						"gorest",
+						"co",
+						"in"
+					],
+					"path": [
+						"public",
+						"v2",
+						"users",
+						"16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"Tenali Ramakrishna\",\r\n\"gender\":\"male\", \"email\":\"tenali.ramakrishna@15ce.com\", \"status\":\"active\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://gorest.co.in/public/v2/users/8",
+					"protocol": "https",
+					"host": [
+						"gorest",
+						"co",
+						"in"
+					],
+					"path": [
+						"public",
+						"v2",
+						"users",
+						"8"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
